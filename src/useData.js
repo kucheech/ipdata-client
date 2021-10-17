@@ -3,10 +3,9 @@ import axios from 'axios';
 import { useDebounce } from 'use-debounce';
 
 const DEBOUNCED_INTERVAL = 2000;
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const useData = () => {
-  const API_URL = 'http://localhost:8080';
-
   const [data, setData] = useState({});
   const [query, setQuery] = useState('8.8.8.8');
   const [value] = useDebounce(query, DEBOUNCED_INTERVAL);
