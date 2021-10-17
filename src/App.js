@@ -12,6 +12,7 @@ function App() {
   return (
     <Container maxWidth="sm" sx={{ marginTop: "100px" }}>
       <TextField
+        error={isError}
         variant="filled"
         value={query}
         onChange={event => setQuery(event.target.value)}
