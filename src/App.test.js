@@ -12,7 +12,7 @@ test('renders input textfield', () => {
 });
 
 test('renders progress indicator', () => {
-  jest.spyOn(hooks, 'useData').mockImplementation(() => [{ data: {}, query: '', isLoading: true, isError: false }, jest.fn()])
+  jest.spyOn(hooks, 'useData').mockImplementation(() => ({ data: {}, query: '', isLoading: true, isError: false, setQuery: () => { } }))
 
   render(<App />);
 
@@ -20,7 +20,7 @@ test('renders progress indicator', () => {
 });
 
 test('does not render progress indicator', () => {
-  jest.spyOn(hooks, 'useData').mockImplementation(() => [{ data: {}, query: '', isLoading: false, isError: false }, jest.fn()])
+  jest.spyOn(hooks, 'useData').mockImplementation(() => ({ data: {}, query: '', isLoading: false, isError: false, setQuery: () => { } }))
 
   render(<App />);
 
@@ -28,7 +28,7 @@ test('does not render progress indicator', () => {
 });
 
 test('render correct data', () => {
-  jest.spyOn(hooks, 'useData').mockImplementation(() => [{ data: { ip: '8.8.8.8', countryCode: 'US', timezone: 'America/New York' }, query: '', isLoading: false, isError: false }, jest.fn()])
+  jest.spyOn(hooks, 'useData').mockImplementation(() => ({ data: { ip: '8.8.8.8', countryCode: 'US', timezone: 'America/New York' }, query: '', isLoading: false, isError: false, setQuery: () => { } }))
 
   render(<App />);
 
@@ -41,7 +41,7 @@ test('render correct data', () => {
 
 test('call setQuery', () => {
   const setQuerySpy = jest.fn();
-  jest.spyOn(hooks, 'useData').mockImplementation(() => [{ data: {}, query: '', isLoading: false, isError: false }, setQuerySpy])
+  jest.spyOn(hooks, 'useData').mockImplementation(() => ({ data: {}, query: '', isLoading: false, isError: false, setQuery: setQuerySpy }));
 
   render(<App />);
 

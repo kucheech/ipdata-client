@@ -20,9 +20,8 @@ export const useData = () => {
       const url = `${API_URL}/data?ip=${value}`;
 
       try {
-        const result = await axios(url);
+        const result = await axios.get(url);
         setData(Object.assign({}, { ip: value }, result.data));
-        console.log(data)
       } catch (error) {
         setData('Data not available')
         setIsError(true);
@@ -34,5 +33,5 @@ export const useData = () => {
     fetchData();
   }, [value]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return [{ data, query, isLoading, isError }, setQuery];
+  return { data, query, isLoading, isError, setQuery };
 };

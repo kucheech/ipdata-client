@@ -7,7 +7,7 @@ import { useData } from './useData';
 import DataCard from './DataCard';
 
 function App() {
-  const [{ data, query, isLoading, isError }, setQuery] = useData();
+  const { data, query, isLoading, isError, setQuery } = useData();
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: "100px" }}>
